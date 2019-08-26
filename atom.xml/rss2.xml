@@ -3,7 +3,7 @@
   <title>EasyLearning</title>
   <icon>https://www.gravatar.com/avatar/95cc5e3e22af70cc78eb5ee39492f66d</icon>
   
-  <link href="/atom.xml" rel="self"/>
+  <link href="/atom.xml/rss2.xml" rel="self"/>
   
   <link href="https://www.cnblogs.com/easylearn/"/>
   <updated>2019-08-22T13:30:37.656Z</updated>
