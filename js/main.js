@@ -188,7 +188,7 @@
 			this.hide = function() {
 				mythis.onHide()
 				mask.classList.remove('in')
-				if (w.innerWidth > 800 || target!='#wechat') {
+				if (w.innerWidth > 800) {
 					main.classList.remove('Mask')
 					menu.classList.remove('Mask')
 					const myimg = d.querySelector('.imgShow')
@@ -212,33 +212,48 @@
 				this.$off.addEventListener(even, this.hide)
 			}
 		},
-        share: function () {
+		share: function() {
 
-            var pageShare = $('#pageShare'),
-                fab = $('#shareFab');
+			const pageShare = $('#pageShare'),
+				fab = $('#shareFab'),
 
-            var shareModal = new this.modal('#globalShare');
+				shareModal = new this.modal('#globalShare')
 
-            $('#menuShare').addEventListener(even, shareModal.toggle);
 
-            if (fab) {
-                fab.addEventListener(even, function () {
-                    pageShare.classList.toggle('in')
-                }, false)
 
-                d.addEventListener(even, function (e) {
-                    !fab.contains(e.target) && pageShare.classList.remove('in')
-                }, false)
-            }
+			if (fab) {
+				fab.addEventListener(
+					even,
+					function() {
+						pageShare.classList.toggle('in')
 
-            var wxModal = new this.modal('#wxShare');
-            wxModal.onHide = shareModal.hide;
 
-            forEach.call($$('.wxFab'), function (el) {
-                el.addEventListener(even, wxModal.toggle)
-            })
+					},
+					false
+				)
+				d.addEventListener(
+					even,
+					function(e) {
+						if (!fab.contains(e.target)) {
+							pageShare.classList.remove('in')
 
-        },
+
+
+						}
+					},
+					false
+				)
+			}
+			const wxModal = new this.modal('#wxShare')
+			wxModal.onHide = shareModal.hide
+
+			forEach.call($$('.wxFab'), function(el) {
+				el.addEventListener(even, wxModal.toggle)
+
+
+
+			})
+		},
 		reward: function() {
 			const modal = new this.modal('#reward')
 			const $rewardCode = $('#rewardCode')
@@ -287,14 +302,14 @@
 				})
 			}
 		},
-        weixin: function () {
-            var modal = new this.modal('#wechat');
-            var wechat_img = $('#wechat_img');
-            $('#wechat_icon').addEventListener(even, function () {
-                wechat_img.src = wechat_img.dataset.img;
-                modal.toggle()
-            });
-        },		
+
+
+
+
+
+
+
+
 		tabBar: function(el) {
 			el.parentNode.parentNode.classList.toggle('expand')
 		},
@@ -534,7 +549,7 @@
 	if (w.BLOG.REWARD) {
 		Blog.reward()
 	}
-	Blog.weixin()
+
 	Blog.noop = noop
 	Blog.even = even
 	Blog.$ = $
